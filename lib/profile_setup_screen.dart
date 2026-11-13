@@ -65,6 +65,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
       await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
         'name': _nameCtrl.text.trim(),
         'email': user.email,
+        'role': 'student',
         'course': _courseCtrl.text.trim(),
         'year': _year,
         'units': _units,
