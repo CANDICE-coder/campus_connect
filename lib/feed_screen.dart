@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'comments_screen.dart';
 
 class FeedScreen extends StatelessWidget {
   const FeedScreen({super.key, required this.profile});
@@ -94,7 +95,7 @@ class FeedScreen extends StatelessWidget {
             return Card(
               margin: const EdgeInsets.only(bottom: 12),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 12, 8, 12),
+                padding: const EdgeInsets.fromLTRB(16, 12, 8, 8),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -162,6 +163,18 @@ class FeedScreen extends StatelessWidget {
                         visualDensity: VisualDensity.compact,
                       ))
                           .toList(),
+                    ),
+                    const SizedBox(height: 4),
+                    TextButton.icon(
+                      icon: const Icon(Icons.chat_bubble_outline, size: 18),
+                      label: const Text('Comments'),
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => CommentsScreen(
+                              postRef: docs[i].reference, profile: profile),
+                        ),
+                      ),
                     ),
                   ],
                 ),
